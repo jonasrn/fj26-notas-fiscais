@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head>
-  <title>Sistema de Notas Fiscais</title>
-  <h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
-</h:head>
-<h:body>
 
-	<div id="cabecalho">
-		<h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"></h:graphicImage>
-	</div>
-	<div id="usuarioLogado">
-		Logado como: #{loginBean.usuario.login}
-	</div>
-	<div id="conteudo">
-
+<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
 	 <h:form id="formProdutos">
 	 	<h2>
 	 		<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}"/>
-	 		
 	 		<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}"/>
-	 		
 	 	</h2>
 	 	<fieldset>
 	
@@ -44,6 +32,7 @@ xmlns:h="http://java.sun.com/jsf/html">
 		</fieldset>
 	 </h:form>
 	 <h2>Listagem de Produtos</h2>
+	 <h:panelGroup>
 	 <h:form id="tabelaProdutos">
 		 <h:dataTable value="#{produtoBean.produtos}" var="produto" styleClass="dados" rowClasses="impar,par">
 	 		<h:column>
@@ -62,9 +51,10 @@ xmlns:h="http://java.sun.com/jsf/html">
 	 		</h:column>
 	 		
 	 		<h:column>
+	 		
 	 		<f:facet name="header">Ações</f:facet>
 	 			<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover">
-	 				<f:ajax render="@form"/>
+	 				<f:ajax render=":tabelaProdutos"/>
 	 			</h:commandLink>
 	 			
 	 			<h:commandLink value="Alterar">
@@ -76,10 +66,7 @@ xmlns:h="http://java.sun.com/jsf/html">
 	 		
 	 	</h:dataTable>
  	</h:form>
- 	</div>
- 	<div id="rodape">
- 		Copyright 2013.
- 		Todos os Direitos reservados a --- Jonas Nepomuceno
- 	</div>
-</h:body>
+ 	</h:panelGroup>
+</ui:define>
+</ui:composition>
 </html>
