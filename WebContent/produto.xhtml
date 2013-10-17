@@ -24,7 +24,10 @@ xmlns:h="http://java.sun.com/jsf/html">
 		 	<h:inputText id="descricao" value="#{produtoBean.produto.descricao}"></h:inputText>
 		 	
 		 	<h:outputLabel value="Preço" for="preco"></h:outputLabel>
-		 	<h:inputText id="preco" value="#{produtoBean.produto.preco}"></h:inputText>
+		 	<h:inputText id="preco" value="#{produtoBean.produto.preco}" 
+		 		required="true" requiredMessage="Preço obrigatório" validatorMessage="O valor mínimo é  0,50">
+		 		<f:validateDoubleRange  minimum="0.50"></f:validateDoubleRange>
+		 	</h:inputText>
 		 	
 		 	
 		 	<h:commandButton value="Gravar" action="#{produtoBean.grava}">
