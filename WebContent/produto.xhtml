@@ -9,6 +9,7 @@ xmlns:h="http://java.sun.com/jsf/html">
 <ui:composition template="/_template.xhtml">
 	<ui:define name="corpo">
 	 <h:form id="formProdutos">
+	 	<h:messages styleClass="erros"></h:messages>
 	 	<h2>
 	 		<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}"/>
 	 		<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}"/>
