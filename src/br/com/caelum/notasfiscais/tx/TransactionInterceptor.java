@@ -22,6 +22,7 @@ public class TransactionInterceptor implements Serializable{
 	public Object intercept(InvocationContext context) throws Exception{
 		
 		System.out.println("ABRINDO A TRANSAÇÃO");
+		System.out.println(context.getMethod().getName());
 		manager.getTransaction().begin();
 		
 		Object resultado = context.proceed();

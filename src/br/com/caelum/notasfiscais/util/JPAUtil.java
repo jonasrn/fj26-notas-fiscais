@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-@RequestScoped
 public class JPAUtil implements Serializable{
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("notas");
 

@@ -8,17 +8,22 @@ xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/_template.xhtml">
 	<ui:define name="corpo">
-	<h:form>
-			<h:outputLabel value="CNPJ do cliente:"/>
-			<p:inputMask mask="99.999.999/9999-9" value="#{notaFiscalBean.notaFiscal.cnpj}"></p:inputMask>
-			
-			<h:outputLabel value="Data:"/>
-			<p:calendar pattern="dd/MM/yyyy" value="#{notaFiscalBean.notaFiscal.data.time}"></p:calendar>
-			
-			<h:commandButton value="Avançar" action="#{notaFiscalBean.avancar}"></h:commandButton>
-			
-	</h:form>
 	
+	<p:dataTable lazy="true" dynamic = "true" value="#{listaNotasFiscaisBean.dataModel}" var="notaFiscal" 
+	paginator="true" rows="5">
+		
+		<p:column headerText="CNPJ">
+			#{notaFiscal.cnpj}
+		</p:column>
+	
+		<p:column headerText="DATA">
+			<h:outputText value="#{notaFiscal.data.time}">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"></f:convertDateTime>
+			</h:outputText>
+		</p:column>
+	</p:dataTable>
+	
+
 </ui:define>
 </ui:composition>
 </html>
